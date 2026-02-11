@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waypoint AI - Smart Travel Planning</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Waypoint AI - Your intelligent travel companion. Get AI-powered itineraries for your dream destinations." />
+    <meta name="keywords" content="travel, AI, itinerary, trip planner, vacation" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=2.0" />
+  </head>
+
+  <body>
+    <!-- ============================================
+         TOP NAVIGATION BAR (3-Part Floating Design)
+         ============================================ -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <!-- Part 1: Logo & Name (Left) -->
+        <a href="#" class="nav-brand">
+          <span class="brand-icon">⛰️</span>
+          <span class="brand-text">Waypoint Travel</span>
+        </a>
+
+        <!-- Part 2: Navigation Links (Center) -->
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-link active" data-view="explore">Destinations</a></li>
+          <li><a href="#" class="nav-link" data-view="saved">My Trips</a></li>
+        </ul>
+
+        <!-- Part 3: AI Planner Button (Right) -->
+        <div class="nav-actions">
+          <button class="btn-ai-planner" id="btn-open-planner">AI Planner</button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero" id="hero">
+      <div class="hero-background">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Beautiful tropical beach" class="hero-image" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">Explore the World, One<br />Journey at a Time.</h1>
+        <p class="hero-subtitle">AI-powered itineraries crafted just for you. Explore smarter, travel better.</p>
+      </div>
+
+      <!-- Floating Search/Planner Card -->
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <h2 class="hero-card-heading">Plan Your Travel Journey</h2>
+        </div>
+
+        <form class="hero-form" id="quick-planner-form">
+          <!-- Main Input Row - 4 inputs horizontal -->
+          <div class="hero-form-inputs">
+            <div class="form-field">
+              <label>Destination</label>
+              <input type="text" id="hero-destination" placeholder="Type the destination" required />
+            </div>
+            <div class="form-field">
+              <label>Days</label>
+              <input type="number" id="hero-days" placeholder="3" min="1" max="14" value="3" required />
+            </div>
+            <div class="form-field">
+              <label>Budget</label>
+              <select id="hero-budget" required>
+                <option value="budget">Budget</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="luxury">Luxury</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Interests</label>
+              <input type="text" id="hero-interests" placeholder="Your interests" />
+            </div>
+          </div>
+
+          <!-- Filter and Button Row - Space between -->
+          <div class="filter-button-row">
+            <!-- Filter Pills with borders -->
+            <div class="filter-section">
+              <span class="filter-label">Filter:</span>
+              <div class="filter-pills">
+                <button type="button" class="filter-pill" data-destination="Bali">Bali</button>
+                <button type="button" class="filter-pill" data-destination="Tokyo">Tokyo</button>
+                <button type="button" class="filter-pill" data-destination="Paris">Paris</button>
+                <button type="button" class="filter-pill" data-destination="New York">New York</button>
+                <button type="button" class="filter-pill" data-destination="Dubai">Dubai</button>
+                <button type="button" class="filter-pill" data-destination="London">London</button>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-generate-hero" id="btn-generate-hero">
+              <span class="btn-text">Generate Itinerary</span>
+              <span class="btn-loading">Generating...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================
+         AI PLANNER MODAL (Floating Overlay)
+         ============================================ -->
+    <div class="modal-overlay" id="planner-modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h2>AI Travel Planner</h2>
+          <button class="modal-close" id="modal-close">×</button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Planner Form -->
+          <div class="planner-form-container" id="planner-form-container">
+            <p class="modal-subtitle">Let our AI create your perfect personalized itinerary</p>
+
+            <form id="planner-form">
+              <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" placeholder="e.g., Bali, Tokyo, Paris..." required />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="days">Days</label>
+                  <input type="number" id="days" min="1" max="14" value="3" required />
+                </div>
+                <div class="form-group">
+                  <label for="budget">Budget</label>
+                  <select id="budget" required>
+                    <option value="budget">Budget</option>
+                    <option value="moderate" selected>Moderate</option>
+                    <option value="luxury">Luxury</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="interests">Interests</label>
+                <input type="text" id="interests" placeholder="e.g., food, culture, adventure, beaches..." />
+              </div>
+
+              <button type="submit" class="btn-generate" id="btn-generate">
+                <span class="btn-text">Generate Itinerary</span>
+                <span class="btn-loading">Magic is happening... 🪄</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Result Display Container -->
+          <div id="result-container" class="result-container hidden">
+            <div class="result-header">
+              <h3>Your Itinerary</h3>
+              <div class="result-actions">
+                <button id="btn-save" class="btn-save">💾 Save</button>
+                <button id="btn-new" class="btn-outline-sm">+ New</button>
+              </div>
+            </div>
+            <div id="itinerary-result" class="itinerary-result">
+              <!-- AI generated itinerary will appear here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         LOADING OVERLAY
+         ============================================ -->
+    <div class="loader-overlay" id="loader-overlay">
+      <div class="loader-content">
+        <div class="spinner"></div>
+        <p class="loader-text">Waypoint AI is crafting your journey...</p>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
