@@ -1,4 +1,4 @@
-## 📖 TOPIK 1: Variabel & Tipe Data (15 menit)
+## 📖 TOPIK 1: Variabel & Tipe Data
 
 ### 📌 Konsep yang Harus Diajarkan:
 
@@ -42,7 +42,7 @@ var travelDays = 7; // cara lama, hindari
 > maxBudget = 7000000; // ❌ ERROR!
 > ```
 
-## 📖 TOPIK 2: Object - Data yang Lebih Terstruktur (15 menit)
+## 📖 TOPIK 2: Object - Data yang Lebih Terstruktur
 
 ### 📌 Konsep yang Harus Diajarkan:
 
@@ -108,7 +108,7 @@ console.log(destination.budget); // 5000000
 > // Rapi! Semua dalam 1 variabel
 > ```
 
-## 📖 TOPIK 3: Array - Menyimpan Banyak Data (15 menit)
+## 📖 TOPIK 3: Array - Menyimpan Banyak Data
 
 ### 📌 Konsep yang Harus Diajarkan:
 
@@ -174,7 +174,7 @@ console.log(destinations[0].name); // "Bali"
 >       └──────────────┘    └──────────────┘
 > ```
 
-## 📖 TOPIK 4: If-Else - Decision Maker (15 menit)
+## 📖 TOPIK 4: If-Else - Decision Maker
 
 ### 📌 Konsep yang Harus Diajarkan:
 
@@ -238,7 +238,7 @@ if (days > 3 && budget > 3000000) {
 >
 > Kode hanya jalan ke 1 cabang, tidak semua!
 
-## 📖 TOPIK 5: Functions & Events (15 menit)
+## 📖 TOPIK 5: Functions & Events
 
 ### 📌 Konsep yang Harus Diajarkan:
 
